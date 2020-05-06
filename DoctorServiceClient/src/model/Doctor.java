@@ -19,7 +19,7 @@ public class Doctor {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			//?useTimezone=true&serverTimezone=UTC
+			
 			// Provide the correct details: DBServer/DBName, username, password
 			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/paf?useTimezone=true&serverTimezone=UTC","root", "");
 		} catch (Exception e) {
@@ -49,12 +49,12 @@ public class Doctor {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			//output = "Inserted successfully";
+			
 			String newDoctors = readDoctors();
 			 output = "{\"status\":\"success\", \"data\": \"" +newDoctors + "\"}";
 			
 		} catch (Exception e) {
-			//output = "Error while inserting the user.";
+			
 			output = "{\"status\":\"error\", \"data\":\"Error while inserting the doctor.\"}";
 			System.err.println(e.getMessage());
 		}
@@ -83,8 +83,7 @@ public class Doctor {
 				// Add into the html table
 				output += "<tr><td><input id='hidDoctorIDUpdate' name='hidDoctorIDUpdate' type='hidden' value='" + Rdoctor_ID + "'>" + Rdoctor_name + "</td>";
 				
-				/*output += "<tr><td><input id=\"hidUserIDUpdate\"name=\"hidUserIDUpdate\"type=\"hidden\" value=\""
-						+ userID + "\">" + userName + "</td>";*/
+			
 				
 				output += "<td>" + Rdoctor_address + "</td>";
 				output += "<td>" + Rdoctor_specilaization + "</td>";
@@ -94,17 +93,7 @@ public class Doctor {
 				output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td><td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-doctorid='"
 						 + Rdoctor_ID + "'>" + "</td></tr>";
 				
-				/*output += "<td><input name=\"btnUpdate\"type=\"button\" value=\"Update\"class=\" btnUpdate btn btn-secondary\"></td><td><form method=\"post\" action=\"User.jsp\"><input name=\"btnRemove\" type=\"submit\"value=\"Remove\" class=\"btn btn-danger\"><input name=\"hidUserIDDelete\" type=\"hidden\"value=\""
-						+ userID + "\">" + "</form></td></tr>";*/
-				
-				/*
-				 * output +=
-				 * "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"
-				 * + "<td><form method=\"post\" action=\"items.jsp\">" +
-				 * "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
-				 * + "<input name=\"userID\" type=\"hidden\" value=\"" + userID + "\">" +
-				 * "</form></td></tr>";
-				 */
+			
 			}
 			con.close();
 			// Complete the html table
@@ -135,13 +124,13 @@ public class Doctor {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			//output = "Updated successfully";
+			
 			
 			String newDoctors = readDoctors();
 			 output = "{\"status\":\"success\", \"data\": \"" +newDoctors + "\"}";
 			
 		} catch (Exception e) {
-			//output = "Error while updating the user.";
+			
 			output = "{\"status\":\"error\", \"data\":\"Error while updating the doctor.\"}";
 			System.err.println(e.getMessage());
 		}
@@ -163,12 +152,12 @@ public class Doctor {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			//output = "Deleted successfully";
+			
 			String newDoctors = readDoctors();
 			 output = "{\"status\":\"success\", \"data\": \"" +newDoctors + "\"}";
 			
 		} catch (Exception e) {
-			//output = "Error while deleting the user.";
+			
 			output = "{\"status\":\"error\", \"data\":\"Error while deleting the doctor.\"}";
 			System.err.println(e.getMessage());
 		}
