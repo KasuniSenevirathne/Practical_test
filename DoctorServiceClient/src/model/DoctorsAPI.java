@@ -59,8 +59,8 @@ public class DoctorsAPI extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
-		String output = userObj.updateDoctorDetails(paras.get("hidDoctorIDSave").toString(), paras.get("Rdoctor_name").toString(),
-				paras.get("Rdoctor_address").toString(), paras.get("Rdoctor_specilaization").toString(), paras.get("Rdoctor_email").toString());
+		String output = userObj.updateDoctorDetails(paras.get("hidDoctorIDSave").toString(), paras.get("Rdoctor_name").toString().replace("+", " ").replace("%2C", ",").replace("%3A", ":"),
+				paras.get("Rdoctor_address").toString().replace("+", " ").replace("%2C", ",").replace("%3A", ":"), paras.get("Rdoctor_specilaization").toString().replace("+", " ").replace("%2C", ",").replace("%3A", ":"), paras.get("Rdoctor_email").toString().replace("+", " ").replace("%2C", ",").replace("%3A", ":").replace("%40", "@"));
 		response.getWriter().write(output);
 	}
 
